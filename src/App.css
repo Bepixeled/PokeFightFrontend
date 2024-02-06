@@ -16,6 +16,18 @@
   font-weight: 700; /* Bold */
 }
 
+@font-face {
+  font-family: "Pokemon";
+  src: url("./fonts/pokemon/Pokemon\ Hollow.ttf");
+  font-weight: 400; /* Normal */
+}
+
+@font-face {
+  font-family: "Pokemon";
+  src: url("./fonts/pokemon/Pokemon\ Solid.ttf");
+  font-weight: 700; /* Bold */
+}
+
 * {
   margin: 0;
   padding: 0;
