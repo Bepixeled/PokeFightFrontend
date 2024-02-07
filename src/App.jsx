@@ -1,9 +1,12 @@
 import "./App.css";
+import Fight from "./components/fight";
 
 function App() {
   return (
     <>
-      <p className="font-pokemon font-bold text-3xl">Hello</p>
+    <div className="bg-poke-bg bg-cover h-screen">
+      <Fight />
+    </div>
     </>
   );
 }
