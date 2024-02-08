@@ -8,7 +8,7 @@ const ChoosePokemon = () => {
   };
 
   return (
-    <section className="bg-[url('/src/assets/images/background.jpg')] max-w-screen-xl mx-auto bg-cover bg-no-repeat p-4 flex flex-col items-center">
+    <section className="bg-[url('/src/assets/images/background.jpg')] min-w-full min-h-screen mx-auto bg-cover bg-no-repeat p-4 flex flex-col items-center justify-center">
       <h1 className="font-pokemon font-bold text-yellow-400 text-4xl">Choose your Pokemon</h1>
       <input type="text" className="mt-8 rounded bg-white opacity-65 p-2" placeholder="Search..." />
       <PokemonCard />
