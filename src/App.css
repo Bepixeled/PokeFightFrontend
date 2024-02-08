@@ -2,3 +2,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    .font-outline-2 {
+      -webkit-text-stroke: 2px rgb(29, 61, 104);
+      letter-spacing: 0.05em;
+      
+    }
+     }
