@@ -1,9 +1,10 @@
 import "./App.css";
+import ChoosePokemon from "./components/ChoosePokemon";
 
 function App() {
   return (
     <>
-      <p className="font-pokemon font-bold text-3xl">Hello</p>
+      <ChoosePokemon />
     </>
   );
 }
