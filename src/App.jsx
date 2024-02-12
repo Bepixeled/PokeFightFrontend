@@ -1,6 +1,6 @@
 import "./App.css";
 import ChoosePokemon from "./components/ChoosePokemon";
-import Fight from "./components/fight";
+import Fight from "./components/Fight";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
