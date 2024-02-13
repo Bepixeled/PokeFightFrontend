@@ -30,7 +30,7 @@ const ChoosePokemon = () => {
         Choose your Pokemon
       </h1>
       <input type="text" className="mt-8 rounded bg-white opacity-65 p-2 w-64 mb-12" placeholder="Search..." />
-      <div className="grid grid-cols-4 mt-8 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-8 gap-8">
         {pokemonData.map((pokemon, index) => (index < 8 ? <CustomCard key={pokemon.name} data={pokemon} /> : null))}
       </div>
     </section>
