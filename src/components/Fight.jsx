@@ -1,23 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PokemonFightCard from "./PokemonFightCard";
 import FightButton from "./FightButton";
 import FightResult from "./FightResult";
+import { PokemonContext } from "../provider/PokemonContext";
 
 const Fight = () => {
-  const [pokemon1, setPokemon1] = useState("regigigas");
+  const { currentPokemon, setCurrentPokemon } = useContext(PokemonContext);
+  const [pokemon1, setPokemon1] = useState(currentPokemon);
   const [pokemon2, setPokemon2] = useState("");
   const [userPokemon, setUserPokemon] = useState({});
   const [opponentPokemon, setOpponentPokemon] = useState({});
   const [winner, setWinner] = useState(null);
-
+ 
+console.log(pokemon1);
   useEffect(() => {
-    const fetchPokemonData = async (pokemon, setUserPokemon) => {
+    const fetchPokemonData = async (pokemonName, setUserPokemon) => {
       try {
         const response = await fetch(
-          `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+          `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
         );
         if (!response.ok) {
-          console.error(`Failed to fetch ${pokemon} data`);
+          console.error(`Failed to fetch ${pokemon1} data`);
           return;
         }
 
@@ -34,7 +37,7 @@ const Fight = () => {
           type: data.types[0].type.name,
         });
       } catch (error) {
-        console.error(`Error fetching ${pokemon} data:`, error);
+        console.error(`Error fetching ${pokemon1} data:`, error);
       }
     };
 
@@ -67,7 +70,7 @@ const Fight = () => {
     };
 
     // Fetch Pokemon Daten
-    fetchPokemonData(pokemon1, setUserPokemon);
+    fetchPokemonData(pokemon1.name, setUserPokemon);
     fetchOpponentPokemon();
   }, [pokemon1]);
 
