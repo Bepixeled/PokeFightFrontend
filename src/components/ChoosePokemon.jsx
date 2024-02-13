@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PokemonCard from "./PokemonCard";
 import axios from "axios";
 import CustomCard from "./CustomCard";
 import useAxios from "../hooks/useAxios";
+import { PokemonContext } from "../provider/PokemonContext";
 
 const ChoosePokemon = () => {
   const [pokemonData, setPokemonData] = useState([]);

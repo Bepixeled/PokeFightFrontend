@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { FlippingCard, FlippingCardBack, FlippingCardFront } from "react-ui-cards";
+import { PokemonContext } from "../provider/PokemonContext";
+import { useNavigate } from "react-router-dom";
 
 const CustomCard = ({ data }) => {
+  const { currentPokemon, setCurrentPokemon } = useContext(PokemonContext);
+  const navigate = useNavigate();
+
   return (
     data && (
-      <>
+      <div
+        onClick={() => {
+          setCurrentPokemon(data), navigate("/fight");
+        }}
+      >
         <FlippingCard>
           <FlippingCardFront>
             <div className="flex flex-col justify-center items-center w-60 h-96 h-80 bg-card-bg-left bg-cover bg-center rounded-xl border-white border-solid border-8">
@@ -32,7 +41,7 @@ const CustomCard = ({ data }) => {
             </div>
           </FlippingCardBack>
         </FlippingCard>
-      </>
+      </div>
     )
   );
 };
