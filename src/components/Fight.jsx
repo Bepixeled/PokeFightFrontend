@@ -4,6 +4,7 @@ import FightButton from "./FightButton";
 import FightResult from "./FightResult";
 import { PokemonContext } from "../provider/PokemonContext";
 
+
 const Fight = () => {
   const { currentPokemon, setCurrentPokemon } = useContext(PokemonContext);
   const [pokemon1, setPokemon1] = useState(currentPokemon);
@@ -11,10 +12,13 @@ const Fight = () => {
   const [userPokemon, setUserPokemon] = useState({});
   const [opponentPokemon, setOpponentPokemon] = useState({});
   const [winner, setWinner] = useState(null);
+  const [winnderId, setWinnerId] = useState(null);
+  const [loserId, setLoserId] = useState(null);
 
   useEffect(() => {
     const imageUrl = currentPokemon.image; // Assuming the image is directly available in currentPokemon
     setUserPokemon({
+      id: currentPokemon.id,
       name: currentPokemon.name,
       imageUrl,
       hp: currentPokemon.hp,
@@ -24,11 +28,13 @@ const Fight = () => {
       type: currentPokemon.type,
     });
 
+    console.log("currentPokemonID", currentPokemon.id);
+
     const fetchOpponentPokemon = async () => {
       try {
         const randomPokemonId = Math.floor(Math.random() * 898) + 1;
         const response = await fetch(
-          `https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`
+          `https://pokefightapi-bq3z.onrender.com/pokemon/${randomPokemonId}`
         );
 
         if (!response.ok) {
@@ -38,9 +44,10 @@ const Fight = () => {
 
         const data = await response.json();
         console.log(data);
-        const imageUrl = data.sprites?.other?.home?.front_default;
+        const imageUrl = data.sprites.other.dream_world.front_default;
 
         setOpponentPokemon({
+          id: data.id,
           name: data.name,
           imageUrl,
           hp: data.stats[0].base_stat,
@@ -49,6 +56,7 @@ const Fight = () => {
           speed: data.stats[5].base_stat,
           type: data.types[0].type.name,
         });
+        
       } catch (error) {
         console.error("Error fetching opponent Pokemon data:", error);
       }
@@ -58,7 +66,7 @@ const Fight = () => {
 
     fetchOpponentPokemon();
   }, [pokemon1]);
-
+  console.log("opponentPokemonID", opponentPokemon.id);
 
   const handleFight = () => {
 
@@ -245,19 +253,23 @@ const Fight = () => {
 
      if (userTotalPower > opponentTotalPower) {
       setWinner(userPokemon.name);
+      setWinnerId(userPokemon.id);
+      setLoserId(opponentPokemon.id);
     } else {
       setWinner(opponentPokemon.name);
+      setWinnerId(opponentPokemon.id);
+      setLoserId(userPokemon.id);
     } 
 
     console.log("userTotalPower", userTotalPower);
     console.log("opponentTotalPower", opponentTotalPower);
-    console.log(winner)
+    
   };
 
   return (
     <div className="bg-poke-bg bg-cover h-screen">
       {winner !== null ? (
-        <FightResult winner={winner} />
+        <FightResult winner={winner} winnerId={winnderId} loserId={loserId} />
       ) : (
         <div className="text-center font-roboto bg-poke-bg bg-no-repeat bg-cover">
           <h1 className="text-4xl lg:text-6xl font-bold text-yellow-300 font-outline-2 font-pokemon ">
