@@ -47,7 +47,7 @@ const Highscore = () => {
         <tbody>
           {highscores &&
             highscores.map((highscore, index) => (
-              <tr className="mb-4">
+              <tr key={highscore.name} className="mb-4">
                 <td className="border-0 px-4 py-2 flex items-center gap-4">
                   <img src={highscore.url} width={70} alt={highscore.name + "image"} />
                   {highscore.name}
