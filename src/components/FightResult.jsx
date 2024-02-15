@@ -27,33 +27,32 @@ const FightResult = ({ winner, winnerId, loserId }) => {
    }; 
 
   console.log(winner);
-  console.log("winner", winnerId);
-  console.log("loser", loserId);
 
-   useEffect(() => {
-     if (winner) {
-       updateLeaderboard(winnerId, loserId); 
-     }
-   }, []);
+
+  useEffect(() => {
+    if (winner) {
+      updateLeaderboard(winnerId, loserId);
+    }
+  }, [winner]);
   
-    (
+  return    (
       <div className="text-center font-roboto bg-poke-bg bg-no-repeat bg-cover">
         <div className="flex justify-center items-center h-screen flex-col space-y-8">
-          <h1 className="text-4xl lg:text-6xl font-bold text-yellow-300 font-outline-2 font-pokemon ">
-            {winner ? `${winner} wins!` : "Fight"}
-          </h1>
-          <div className="flex justify-between items-center">
-            <a href="/">
-              <div className="bg-fight-btn bg-contain h-48 w-48">
-                <button className="h-48 w-48">Fight again</button>
-              </div>
-            </a>
-            <a href="/">
-              <div className="bg-fight-btn bg-contain h-48 w-48">
-                <button className="h-48 w-48">Leaderboard</button>
-              </div>
-            </a>
-          </div>
+        <h1 className="text-4xl lg:text-6xl font-bold text-yellow-300 font-outline-2 font-pokemon ">
+  {winner ? `${winner} wins!` : "Fight"}
+</h1>
+<div className="flex justify-between items-center">
+  <a href="/">
+    <div className="bg-fight-btn bg-contain h-48 w-48">
+      <button className="h-48 w-48">Fight again</button>
+    </div>
+  </a>
+  <a href="/">
+    <div className="bg-fight-btn bg-contain h-48 w-48">
+      <button className="h-48 w-48">Leaderboard</button>
+    </div>
+  </a>
+</div>
         </div>
       </div>
     );
