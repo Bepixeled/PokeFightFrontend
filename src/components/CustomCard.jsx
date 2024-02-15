@@ -16,7 +16,7 @@ const CustomCard = ({ data }) => {
       <FlippingCard>
         <FlippingCardFront>
           <div
-            className={`flex flex-col justify-center items-center w-60 h-96 h-80 bg-card-bg-left bg-cover bg-center rounded-xl border-white border-solid border-8 ${
+            className={`flex flex-col justify-center items-center w-60 h-80 bg-card-bg-left bg-cover bg-center rounded-xl border-white border-solid border-8 ${
               !data ? `animate-pulse` : null
             }`}
           >
