@@ -1,4 +1,5 @@
 import { React, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const FightResult = ({ winner, winnerId, loserId }) => {
    const updateLeaderboard = async (winnerId, loserId) => {
@@ -42,16 +43,16 @@ const FightResult = ({ winner, winnerId, loserId }) => {
   {winner ? `${winner} wins!` : "Fight"}
 </h1>
 <div className="flex justify-between items-center">
-  <a href="/">
+  <Link to="/">
     <div className="bg-fight-btn bg-contain h-48 w-48">
       <button className="h-48 w-48">Fight again</button>
     </div>
-  </a>
-  <a href="/">
+  </Link>
+  <Link to="/highscore">
     <div className="bg-fight-btn bg-contain h-48 w-48">
       <button className="h-48 w-48">Leaderboard</button>
     </div>
-  </a>
+  </Link>
 </div>
         </div>
       </div>

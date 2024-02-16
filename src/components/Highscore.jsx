@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useAxios from "../hooks/useAxios";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Highscore = () => {
   const [highscores, setHighScores] = useState([]);
@@ -60,6 +61,13 @@ const Highscore = () => {
             ))}
         </tbody>
       </table>
+      <div>
+      <Link to="/">
+    <div className="bg-fight-btn bg-contain h-48 w-48">
+      <button className="h-48 w-48">Fight again</button>
+    </div>
+  </Link>
+      </div>
     </section>
   );
 };
